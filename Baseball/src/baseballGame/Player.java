@@ -9,7 +9,6 @@ public class Player {
         for (int i = 0; i < 3; i++) {
             inputNum.add(num.charAt(i) - '0');
         }
-        System.out.println(inputNum.toString());
         return inputNum;
     }
 
@@ -28,34 +27,30 @@ public class Player {
             try {
                 System.out.print("숫자를 입력해주세요 ex)123 => ");
                 return Integer.toString(scanner.nextInt());
-            }
-            catch (Exception e) {
-                System.out.println("잘묏된 입력입니다. 다시 입력해주세요.");
+            } catch (Exception e) {
+                System.out.println("잘묏된 입력입니다. 다시 입력하세요.");
                 scanner = new Scanner(System.in);
             }
         }
     }
 
     private boolean checkThreeNum(String num) {
-        //String num = "";
-        //while (true) {
-            //num = inputNum();
-            if (!(num.length() == 3)) {
-                System.out.println("3자리의 수가 아닙니다. 다시 입력하세요.");
-                return false;
-                //continue;
-            }
-            return true;
-            //break;
-        //}
-        //return num;
+        if (!(num.length() == 3)) {
+            System.out.println("3자리의 수가 아닙니다. 다시 입력하세요.");
+            return false;
+        }
+        return true;
     }
 
     private boolean checkOverlapNum(String num) {
-        //String num = "";
-        if (!(num.length() == 3)) {
-            System.out.println("");
+        String check = "";
+        for (char a : num.toCharArray()) {
+            if (check.toString().contains(String.valueOf(a))) {
+                System.out.println("중복된 숫지를 입력하였습니다. 다시 입력하세요.");
+                return false;
+            }
+            check += String.valueOf(a);
         }
-
+        return true;
     }
 }
