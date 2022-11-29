@@ -5,8 +5,7 @@ import java.util.List;
 public class Game {
     public Game() { }
 
-    public boolean play(List<Integer> computerNum) {
-        //List<Integer> userNum = Player.playerNum();
+    public boolean play(List<Integer> computerNum, List<Integer> userNum) {
         if (computerNum.equals(userNum)) return true; //게임 종료 여부
         int strike = checkStrike(computerNum, userNum);
         int ball = checkBoll(computerNum, userNum) - strike;
